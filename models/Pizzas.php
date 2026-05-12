@@ -5,8 +5,8 @@ class Pizzas
 
 {
     private $conn;
-    private $tabela = "pizzas";
-    public $idpizzas;
+    private $tabela = "Pizzas";
+    public $idPizzas;
     public $nome;  
 
     public $ingredientes;
@@ -19,7 +19,7 @@ class Pizzas
     }
 
     public function getall(){
-        $query = "SELECT idpizza, nome, ingredientes, valor FROM " . $this->tabela;
+        $query = "SELECT idPizzas, nome, ingredientes, valor FROM " . $this->tabela;
         
         $stmt = $this->conn->prepare($query);
         
@@ -27,6 +27,36 @@ class Pizzas
         
         return $stmt;
     }
+    public function get (){
+        $query = 'SELECT 
+         idPizzas,
+         nome,
+         ingredientes,
+         valor
+        FROM ' . $this->tabela . ' 
+        WHERE 
+            idPizzas = ? 
+        LIMIT 1';
+    
+        $stmt = $this->conn->prepare($query);
+        
+        $stmt->bindParam(1, $this->idPizzas);
+        $stmt->bindParam(2, $this->nome);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        $this->nome = $row['nome'];
+        $this->ingredientes = $row['ingredientes'];
+        $this->valor = $row['valor'];
+    }
+
+
+
+
+
+
 }
 
 

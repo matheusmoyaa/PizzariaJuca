@@ -5,4 +5,4 @@ header("access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
 // echo json_encode(["Mensagem" => "Hello World! Bem Vindos à Pizzaria do Juca"]);
 
-echo json_encode(array("Mensagem" => "Hello World! Bem Vindos à Pizzaria do Juca"));
+echo json_encode(array("Mensagem" => "Hello World! Bem Vindos a Pizzaria do Juca"));

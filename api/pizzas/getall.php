@@ -1,5 +1,3 @@
-<?php
-echo "hello"?>;
 
 <?php
 // api/pizza/read.php
@@ -9,19 +7,19 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
 // Incluir arquivos de banco de dados e modelo
-include_once '../../config/Database.php';
-include_once '../../models/Pizza.php';
+include_once '../../config/DB.php';
+include_once '../../models/Pizzas.php';
  
 // Instanciar o objeto Database e obter a conexão
-$database = new Database();
+$database = new DB();
 $db = $database->getConnection();
  
 // Instanciar o objeto Pizza
-$pizza = new Pizza($db);
+$pizza = new Pizzas($db);
  
 // try{ colocar para demonstrar erro com coluna errada mas lá no método read em pizza
     // Chamar o método read() para buscar as pizzas
-    $stmt = $pizza->read();
+    $stmt = $pizzas->read();
     $num = $stmt->rowCount();
  
     // Verificar se mais de 0 registros foram encontrados
